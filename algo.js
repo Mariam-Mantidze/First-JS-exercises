@@ -162,33 +162,70 @@
 
 // quick sort
 
-function quickSort(arr) {
-     if (arr.length <= 1) {
-          return arr;
-     }
+// function quickSort(arr) {
+//      if (arr.length <= 1) {
+//           return arr;
+//      }
 
-     const pirovtIndex = Math.floor(arr.length / 2);
-     const pivot = arr[pirovtIndex];
+//      const pirovtIndex = Math.floor(arr.length / 2);
+//      const pivot = arr[pirovtIndex];
 
-     let left = [];
-     let right = [];
+//      let left = [];
+//      let right = [];
 
-     for (let i = 0; i < arr.length; i++) {
-          if (arr[i] === pivot) {
-               continue;
-          }
+//      for (let i = 0; i < arr.length; i++) {
+//           if (arr[i] === pivot) {
+//                continue;
+//           }
           
-          if (arr[i] > pivot) {
-               right.push(arr[i]);
+//           if (arr[i] > pivot) {
+//                right.push(arr[i]);
+//           } else {
+//                left.push(arr[i]);
+//           }
+//      }
+//      return [...quickSort(left), pivot, ...quickSort(right)]
+// }
+
+// console.log(quickSort([9, -3, 5, 2, 6, 8, -6, 1, 3]));
+
+// ------ Linear Search ------
+
+// function linearSearch(arr, element) {
+
+//      for (let i = 0; i < arr.length; i++) {
+//           if (arr[i] === element) {
+//                return i;
+//           }
+//      } 
+//      return 7;
+// }
+
+// console.log(linearSearch([2, 3, 5, 7, 9], 12));
+
+
+// ----- Binary Search -----
+
+function binarySearch(arr, target) {
+     let start = 0;
+     let end = arr.length - 1;
+
+     while (start <= end) {
+          let middle = Math.floor((start + end) / 2);
+
+          if (arr[middle] === target) {
+               return middle;
+          } else if (arr[middle] > target) {
+               end = middle - 1;
           } else {
-               left.push(arr[i]);
+               start = middle + 1; 
           }
      }
-     return [...quickSort(left), pivot, ...quickSort(right)]
+     return -1;
+
 }
 
-console.log(quickSort([9, -3, 5, 2, 6, 8, -6, 1, 3]));
-
+console.log(binarySearch([2, 3, 5, 7, 8, 10, 12, 15, 18, 20], 7));
 
 
 
